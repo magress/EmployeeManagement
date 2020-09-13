@@ -12,6 +12,8 @@ namespace Employees.services
 
         Employee Update(Employee updatedEmployee);
 
-        
+        Employee Add(Employee newEmployee);
+
+
     }
 }

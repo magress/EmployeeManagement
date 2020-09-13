@@ -26,43 +26,69 @@ namespace EmployeeManagement.Pages.Employees
         }
         [BindProperty]
         public IFormFile Photo { get; set; }
+
+        [BindProperty]
         public Employee Employee { get; set; }
 
         [BindProperty]
         public bool Notify { get; set; }
 
         public string Message { get; set; }
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int?id)
         {
-            Employee = employeeRepository.GetEmployee(id);
+            // if id parameter has value, retrieve the existing
+            // employee details, else create a new Employee
+            if (id.HasValue)
+            {
+                Employee = employeeRepository.GetEmployee(id.Value);
+            }
+            else
+            {
+                Employee = new Employee();
+            }
 
             if (Employee == null)
-                return RedirectToPage("pagenotfound");
-            else
-                return Page();
+            {
+                return RedirectToPage("/NotFound");
+            }
+
+            return Page();
 
         }
 
-        public IActionResult OnPost(Employee employee)
+        public IActionResult OnPost()
         {
-
-            if (Photo != null)
+            if (ModelState.IsValid)
             {
-                // If a new photo is uploaded, the existing photo must be
-                // deleted. So check if there is an existing photo and delete
-                if (employee.Photopath != null)
+                if (Photo != null)
                 {
-                    string filePath = Path.Combine(webHostEnvironment.WebRootPath,
-                        "images", employee.Photopath);
-                    System.IO.File.Delete(filePath);
+                    // If a new photo is uploaded, the existing photo must be
+                    // deleted. So check if there is an existing photo and delete
+                    if (Employee.Photopath != null)
+                    {
+                        string filePath = Path.Combine(webHostEnvironment.WebRootPath,
+                            "images", Employee.Photopath);
+                        System.IO.File.Delete(filePath);
+                    }
+                    // Save the new photo in wwwroot/images folder and update
+                    // PhotoPath property of the employee object
+                    Employee.Photopath = ProcessUploadedFile();
                 }
-                // Save the new photo in wwwroot/images folder and update
-                // PhotoPath property of the employee object
-                employee.Photopath = ProcessUploadedFile();
+
+                // If Employee ID > 0, call Update() to update existing 
+                // employee details else call Add() to add new employee
+                if (Employee.Id > 0)
+                {
+                    Employee = employeeRepository.Update(Employee);
+                }
+                else
+                {
+                    Employee = employeeRepository.Add(Employee);
+                }
+                return RedirectToPage("Index");
             }
 
-            Employee = employeeRepository.Update(employee);
-            return RedirectToPage("Index");
+            return Page();
         }
         public IActionResult OnPostUpdateNotificationPreferences(int id)
         {
@@ -75,7 +101,7 @@ namespace EmployeeManagement.Pages.Employees
                 Message = "You have turned off email notifications";
             }
             TempData["message"] = Message;
-            return RedirectToPage("Details", new { id = id });
+            return RedirectToPage("Details", new { id });
         }
 
         private string ProcessUploadedFile()

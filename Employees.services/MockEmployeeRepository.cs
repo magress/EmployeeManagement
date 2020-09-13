@@ -49,5 +49,12 @@ namespace Employees.services
 
             return employee;
         }
+
+        public Employee Add(Employee newEmployee)
+        {
+            newEmployee.Id = _employeelist.Max(e => e.Id) + 1;
+            _employeelist.Add(newEmployee);
+            return newEmployee;
+        }
     }
 }
