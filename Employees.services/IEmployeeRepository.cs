@@ -14,6 +14,8 @@ namespace Employees.services
 
         Employee Add(Employee newEmployee);
 
+        Employee Delete(int id);
+
 
     }
 }

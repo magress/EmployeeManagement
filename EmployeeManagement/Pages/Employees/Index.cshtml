@@ -22,7 +22,7 @@
         <div class="card-footer text-center">
             <a asp-page="/Employees/details" class="btn btn-primary m-1" asp-route-Id="@employee.Id">View</a>
             <a asp-page="/Employees/edit" class="btn btn-primary m-1" asp-route-Id="@employee.Id">Edit</a>
-            <a href="#" class="btn btn-danger m-1">Delete</a>
+            <a asp-page="/Employees/delete" asp-route-ID="@employee.Id" class="btn btn-danger m-1">Delete</a>
 
         </div>
 

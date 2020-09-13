@@ -56,5 +56,15 @@ namespace Employees.services
             _employeelist.Add(newEmployee);
             return newEmployee;
         }
+
+        public Employee Delete(int id)
+        {
+            var employeetodelete = _employeelist.FirstOrDefault(e=>e.Id==id);
+            if(employeetodelete!=null)
+            {
+                _employeelist.Remove(employeetodelete);
+            }
+            return employeetodelete;
+        }
     }
 }
