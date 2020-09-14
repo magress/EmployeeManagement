@@ -1,10 +1,10 @@
-﻿using Employees.Model;
+﻿using Employ.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Employees.services
+namespace Employ.services
 {
     public class MockEmployeeRepository : IEmployeeRepository
     {

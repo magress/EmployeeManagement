@@ -7,8 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
-    <ProjectReference Include="..\Employees.Model\Employees.Model.csproj" />
-    <ProjectReference Include="..\Employees.services\Employees.services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Employ.Model\Employ.Model.csproj" />
+    <ProjectReference Include="..\Employ.services\Employ.services.csproj" />
   </ItemGroup>
 
 </Project>

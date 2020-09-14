@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Employees.Model
+namespace Employ.Model
 {
     public class Employee
     {

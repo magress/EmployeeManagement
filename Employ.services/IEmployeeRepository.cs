@@ -1,8 +1,8 @@
-﻿using Employees.Model;
+﻿using Employ.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Employees.services
+namespace Employ.services
 {
     public interface IEmployeeRepository
     {

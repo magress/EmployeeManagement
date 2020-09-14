@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Employees.Model
+namespace Employ.Model
 {
     public enum Dept
     {
