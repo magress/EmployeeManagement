@@ -66,5 +66,21 @@ namespace Employ.services
             }
             return employeetodelete;
         }
+        public IEnumerable<DeptHeadCount> EmployeeCountByDept(Dept? dept)
+        {
+            IEnumerable<Employee> query = _employeelist;
+
+            if (dept.HasValue)
+            {
+                query = query.Where(e => e.Department == dept.Value);
+            }
+
+            return query.GroupBy(e => e.Department)
+                                .Select(g => new DeptHeadCount()
+                                {
+                                    Department = g.Key.Value,
+                                    Count = g.Count()
+                                }).ToList();
+        }
     }
 }

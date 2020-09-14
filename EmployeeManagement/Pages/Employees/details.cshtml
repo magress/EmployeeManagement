@@ -12,6 +12,11 @@
     </div>
 }
 <h1>Details</h1>
+@await Component.InvokeAsync("HeadCount", new
+{
+    department = Model.Employee.Department
+})
+
 <div class="row justify-content-center m-3">
     <div class="col-sm-8">
         <div class="card">
