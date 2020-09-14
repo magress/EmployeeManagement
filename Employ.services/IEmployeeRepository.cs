@@ -16,6 +16,8 @@ namespace Employ.services
 
         Employee Delete(int id);
         IEnumerable<DeptHeadCount> EmployeeCountByDept(Dept? dept);
+
+        IEnumerable<Employee> Search(string searchTerm);
     }
 }
 
