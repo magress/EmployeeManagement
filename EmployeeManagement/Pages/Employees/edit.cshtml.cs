@@ -24,7 +24,7 @@ namespace EmployeeManagement.Pages.Employees
             // absolute path of WWWRoot folder
             this.webHostEnvironment = webHostEnvironment;
         }
-        [BindProperty]
+        [BindProperty(SupportsGet =true)]
         public IFormFile Photo { get; set; }
 
         [BindProperty]
@@ -60,7 +60,7 @@ namespace EmployeeManagement.Pages.Employees
         {
             if (ModelState.IsValid)
             {
-                if (Photo != null)
+                if (Photo != null )
                 {
                     // If a new photo is uploaded, the existing photo must be
                     // deleted. So check if there is an existing photo and delete
@@ -108,7 +108,7 @@ namespace EmployeeManagement.Pages.Employees
             {
                 string uniqueFileName = null;
 
-                if (Photo != null)
+                if (Photo != null )
                 {
                     string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + Photo.FileName;
