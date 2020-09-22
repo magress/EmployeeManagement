@@ -3,7 +3,7 @@
   <PropertyGroup>
     <RazorPage_SelectedScaffolderID>RazorPageScaffolder</RazorPage_SelectedScaffolderID>
     <RazorPage_SelectedScaffolderCategoryPath>root/Common/RazorPage</RazorPage_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>emspoc - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>esmpoc - Web Deploy</NameOfLastUsedPublishProfile>
     <ShowAllFiles>true</ShowAllFiles>
     <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
   </PropertyGroup>
